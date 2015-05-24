@@ -1,0 +1,8 @@
+#!/usr/bin/make -f
+export PYBUILD_NAME = clamp
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild

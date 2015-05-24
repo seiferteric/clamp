@@ -1,0 +1,14 @@
+Source: clamp
+Maintainer: Eric Seifert <seiferteric@gmail.com>
+Section: misc
+Priority: optional
+Standards-Version: 3.9.5
+X-Python3-Version: >= 3.2
+Build-Depends: debhelper (>= 9), dh-python, python3-all, python3-setuptools
+
+Package: clamp
+Architecture: any
+Depends: ${misc:Depends},${python3:Depends}, python3
+Description: CLAMP CLI Alias tool with variable substitution
+	Allows you to create aliases for commands with optional parameters. Useful for wrapping curl commands when testing an API for example.
+
