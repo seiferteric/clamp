@@ -1,5 +1,6 @@
-clamp (0.0.1) UNRELEASED; urgency=medium
+clamp (0.0.1) utopic; urgency=medium
 
   * Initial release. (Closes: #XXXXXX)
+  * UNRELEASED
 
- -- Eric Seifert <eric.seifert@cyaninc.com>  Thu, 28 May 2015 15:49:18 -0700
+ -- Eric Seifert <eric.seifert@cyaninc.com>  Sat, 23 May 2015 18:27:11 -0700
