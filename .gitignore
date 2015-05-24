@@ -2,3 +2,10 @@
 clamp.egg-info/
 dist/
 build/
+
+.pybuild/
+debian/clamp.debhelper.log
+debian/clamp.substvars
+debian/clamp/
+debian/files
+
