@@ -1,14 +1,16 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 
 import json, argparse, os, sys
 import re
+import shlex
 
 
 
 parser = argparse.ArgumentParser(description='CLAMP')
 parser.add_argument('--set', help="Create a new command")
 parser.add_argument('--list', action="store_true", help="List commands")
+parser.add_argument('--delete', help="Delete command")
 parser.add_argument('command', nargs=argparse.REMAINDER)
 args = parser.parse_args()
 
@@ -58,7 +60,15 @@ elif args.list:
     except:
         pass
     for c in commands:
-        print "%s : %s"%(c, commands[c])
+        print("%s : %s"%(c, shlex.quote(commands[c])))
+elif args.delete:
+    commands = {}
+    with open(".clamp") as f:
+        commands = json.load(f)
+    if args.delete in commands:
+        commands.pop(args.delete, None)
+    with open(".clamp", "w") as f:
+        f.write(json.dumps(commands))
 elif args.command:
     #Look for an existing command to run
 
@@ -75,5 +85,5 @@ elif args.command:
         args = parser.parse_args()
 
         command = var_replace(cmd_args, vars(args), command)
-        
+
         os.system(command)
