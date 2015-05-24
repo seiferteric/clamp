@@ -1,2 +1,4 @@
 .clamp
-
+clamp.egg-info/
+dist/
+build/
