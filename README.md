@@ -47,7 +47,7 @@ optional arguments:
   -p P
 ```
 
-##How Clamp Works
+##.clamp files
 Clamp will create a file in the current directory called .clamp where it will
 store the command alias. This allows you to create different clamp files for
 different projects.
