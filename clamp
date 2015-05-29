@@ -50,8 +50,8 @@ def read_config(file_name=".clamp"):
 parser = argparse.ArgumentParser(description='CLAMP')
 parser.add_argument('--set', help="Create a new command")
 parser.add_argument('--list', action="store_true", help="List commands")
-parser.add_argument('--delete', help="Delete command")
 choices = read_config().keys()
+parser.add_argument('--delete', help="Delete command", choices=choices)
 parser.add_argument('command', nargs=argparse.REMAINDER, choices=choices, help="user defined command: {%s}"%(','.join(choices)), metavar="command")
 try:
     argcomplete.autocomplete(parser)
