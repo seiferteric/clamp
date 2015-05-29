@@ -4,7 +4,10 @@
 import json, argparse, os, sys
 import re
 import shlex
-
+try:
+    import argcomplete
+except: 
+    pass
 
 def get_vars(searchstr):
     #Find variables in the form $(-x=y) or just $(-x)
@@ -49,6 +52,10 @@ parser.add_argument('--list', action="store_true", help="List commands")
 parser.add_argument('--delete', help="Delete command")
 choices = read_config().keys()
 parser.add_argument('command', nargs=argparse.REMAINDER, choices=choices, help="user defined command: {%s}"%(','.join(choices)), metavar="command")
+try:
+    argcomplete.autocomplete(parser)
+except:
+    pass
 args = parser.parse_args()
 
 if args.set:
@@ -79,8 +86,15 @@ elif args.command:
         for a in cmd_args:
             parser.add_argument(a[0], default=a[1], required=False if a[1] else True)
         sys.argv.pop(0)
+        try:
+            argcomplete.autocomplete(parser)
+        except:
+            pass
         args = parser.parse_args()
 
         command = var_replace(cmd_args, vars(args), command)
 
-        os.system(command)
+        
+        cmdargs = command.split()
+        cmd = cmdargs[0]
+        os.execvp(file=cmd, args=cmdargs)
