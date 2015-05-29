@@ -26,18 +26,20 @@ $ clamp adduser -name Eric -email eric@example.com
 ##Clamp options
 ```
 $ clamp -h
-usage: clamp [-h] [--set SET] [--list] [--delete DELETE] ...
+usage: clamp [-h] [--set SET] [-r] [--list] [--delete {}] ...
 
 CLAMP
 
 positional arguments:
-  command
+  command      user defined command: {}
 
 optional arguments:
-  -h, --help       show this help message and exit
-  --set SET        Create a new command
-  --list           List commands
-  --delete DELETE  Delete command
+  -h, --help   show this help message and exit
+  --set SET    Create a new command
+  -r           Read command from stdin instead of command line, may be easier
+               for quotes
+  --list       List commands
+  --delete {}  Delete command
 ```
 
 Clamp will even show the usage for the commands you create, though it needs improvement:
