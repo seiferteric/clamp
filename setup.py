@@ -12,7 +12,4 @@ setup(
       url = "https://github.com/seiferteric/clamp",
       zip_safe = True,
       scripts = ['clamp']
-
-
-
 )
