@@ -10,7 +10,7 @@ $ clamp --set listusers -- 'curl http://localhost:$(-port=3000)/users'
 ```
 
 This will create a new clamp command called "listusers" that can accept a
-parameter "-p" for the port, although a default of 3000 is provided.
+parameter "-port" for the port, although a default of 3000 is provided.
 
 ```
 $ clamp listusers
