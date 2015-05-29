@@ -1,3 +1,17 @@
+clamp (0.0.2) utopic; urgency=medium
+
+  * Update changelog for 0.0.1 release
+  * Initial commit
+  * Update README
+  * Update README.md
+  * Update README.md
+  * Update README.md
+  * cleanup
+  * Add optional argcomplete, use execvp instead of os.system
+  * Forgot PYTHON_ARGCOMPLETE_OK
+
+ -- Eric Seifert <eric.seifert@cyaninc.com>  Fri, 29 May 2015 09:08:18 -0700
+
 clamp (0.0.1) utopic; urgency=medium
 
   * Initial release. (Closes: #XXXXXX)
