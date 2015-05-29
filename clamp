@@ -67,11 +67,12 @@ if args.set:
     write_config(commands)
 elif args.list:
     commands = read_config()
-    print("\n")
-    length = len(max(commands.keys()))
-    for k,v in commands.items():
-        print("%s:%s %s"%(k, ' '*(length-len(k) + 1),shlex.quote(v)))
-    print("\n")
+    if commands:
+        print("\n")
+        length = len(max(commands.keys()))
+        for k,v in commands.items():
+            print("%s:%s %s"%(k, ' '*(length-len(k) + 1),shlex.quote(v)))
+        print("\n")
 elif args.delete:
     commands = read_config()
     if args.delete in commands:
