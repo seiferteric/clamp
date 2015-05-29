@@ -17,6 +17,12 @@ $ clamp listusers
 [{"id":1,"created_at":"2015-05-28T16:39:52.178Z","updated_at":"2015-05-28T16:39:52.178Z","name":"Eric"}]
 ```
 
+Slightly more complicated, be careful with your quotes...
+```
+$ clamp --set adduser -- 'curl -X POST -H "Content-type: application/json" -d '"'"'{"name":"$(-name)","email":"$(-email)"}'"'"' http://localhost:$(-port=3000)/users'
+$ clamp adduser -name Eric -email eric@example.com
+{"id":8,"name":"Eric","email":"eric@example.com","created_at":"2015-05-29T23:18:47.224Z","updated_at":"2015-05-29T23:18:47.224Z"}
+```
 ##Clamp options
 ```
 $ clamp -h
