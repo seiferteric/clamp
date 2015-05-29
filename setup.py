@@ -11,5 +11,8 @@ setup(
       keywords = "CLI alias", 
       url = "https://github.com/seiferteric/clamp",
       zip_safe = True,
-      scripts = ['clamp']
+      scripts = ['clamp'],
+      extras_require = {
+          'TAB_COMPLETE':  ["argcomplete", "TC"]
+      }
 )

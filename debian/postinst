@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+activate-global-python-argcomplete3 || true
+
+#DEBHELPER#
