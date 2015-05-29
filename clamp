@@ -49,6 +49,7 @@ def read_config(file_name=".clamp"):
 
 parser = argparse.ArgumentParser(description='CLAMP')
 parser.add_argument('--set', help="Create a new command")
+parser.add_argument('-r', action="store_true", help="Read command from stdin instead of command line, may be easier for quotes")
 parser.add_argument('--list', action="store_true", help="List commands")
 choices = read_config().keys()
 parser.add_argument('--delete', help="Delete command", choices=choices)
@@ -62,7 +63,10 @@ args = parser.parse_args()
 if args.set:
     commands = read_config()
     #Create a new command
-    command = ' '.join(args.command[1:])
+    if args.r:
+        command = sys.stdin.readline().rstrip("\n")
+    else:
+        command = ' '.join(args.command[1:])
     commands[args.set] = command
     write_config(commands)
 elif args.list:
