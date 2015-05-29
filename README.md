@@ -51,3 +51,9 @@ optional arguments:
 Clamp will create a file in the current directory called .clamp where it will
 store the command alias. This allows you to create different clamp files for
 different projects.
+
+##Install
+```
+$ git clone https://github.com/seiferteric/clamp.git
+$ cd clamp && python3 setup.py install
+```
