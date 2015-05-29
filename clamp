@@ -6,22 +6,17 @@ import re
 import shlex
 
 
-
-parser = argparse.ArgumentParser(description='CLAMP')
-parser.add_argument('--set', help="Create a new command")
-parser.add_argument('--list', action="store_true", help="List commands")
-parser.add_argument('--delete', help="Delete command")
-parser.add_argument('command', nargs=argparse.REMAINDER)
-args = parser.parse_args()
-
-
 def get_vars(searchstr):
-    sub = re.compile('\$\((\-\w+)=?(\w*)\)')
+    #Find variables in the form $(-x=y) or just $(-x)
+    #Return a list of these vars with there default values in the form ((x,y), ...)
+    #I looked at soem existing templating engines but did not seem to do
+    #exactly what I needed, and this was easy enough....
+    sub = re.compile('\$\((\-\w+)=?([^\)\(]*)\)')
     subvars = sub.findall(searchstr)
     return subvars
 
 def var_replace(subvars, args, searchstr):
-    sub = re.compile('\$\(\-\w+=?\w*\)')
+    sub = re.compile('\$\(\-\w+=?[^\(\)]*\)')
     
     for s in subvars:
         replstr = ""
@@ -37,44 +32,46 @@ def var_replace(subvars, args, searchstr):
         searchstr = searchstr.replace(replstr, arg if arg else s[1])
     return searchstr
 
-
-
-
-if args.set:
-    commands = {}
+def write_config(commands, file_name=".clamp"):
+    with open(file_name, "w") as f:
+        f.write(json.dumps(commands, sort_keys=True, indent=4, separators=(',', ': ')))
+def read_config(file_name=".clamp"):
     try:
-        with open(".clamp") as f:
+        with open(file_name) as f:
             commands = json.load(f)
     except:
-        pass
+        commands = {}
+    return commands 
+
+parser = argparse.ArgumentParser(description='CLAMP')
+parser.add_argument('--set', help="Create a new command")
+parser.add_argument('--list', action="store_true", help="List commands")
+parser.add_argument('--delete', help="Delete command")
+choices = read_config().keys()
+parser.add_argument('command', nargs=argparse.REMAINDER, choices=choices, help="user defined command: {%s}"%(','.join(choices)), metavar="command")
+args = parser.parse_args()
+
+if args.set:
+    commands = read_config()
     #Create a new command
     command = ' '.join(args.command[1:])
     commands[args.set] = command
-    with open(".clamp", "w") as f:
-        f.write(json.dumps(commands))
+    write_config(commands)
 elif args.list:
-    commands = {}
-    try:
-        with open(".clamp") as f:
-            commands = json.load(f)
-    except:
-        pass
-    for c in commands:
-        print("%s : %s"%(c, shlex.quote(commands[c])))
+    commands = read_config()
+    print("\n")
+    length = len(max(commands.keys()))
+    for k,v in commands.items():
+        print("%s:%s %s"%(k, ' '*(length-len(k) + 1),shlex.quote(v)))
+    print("\n")
 elif args.delete:
-    commands = {}
-    with open(".clamp") as f:
-        commands = json.load(f)
+    commands = read_config()
     if args.delete in commands:
         commands.pop(args.delete, None)
-    with open(".clamp", "w") as f:
-        f.write(json.dumps(commands))
+    write_config(commands)
 elif args.command:
     #Look for an existing command to run
-
-    commands = {}
-    with open(".clamp") as f:
-        commands = json.load(f)
+    commands = read_config()
     if args.command[0] in commands:
         command = commands[args.command[0]]
         parser = argparse.ArgumentParser(description=args.command[0])
