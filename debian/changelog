@@ -1,3 +1,9 @@
+clamp (0.0.3) utopic; urgency=medium
+
+  * Add choices to delete for tab completion
+
+ -- Eric Seifert <eric.seifert@cyaninc.com>  Fri, 29 May 2015 09:12:08 -0700
+
 clamp (0.0.2) utopic; urgency=medium
 
   * Update changelog for 0.0.1 release
