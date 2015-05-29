@@ -55,5 +55,5 @@ different projects.
 ##Install
 ```
 $ git clone https://github.com/seiferteric/clamp.git
-$ cd clamp && python3 setup.py install
+$ cd clamp && sudo python3 setup.py install
 ```
