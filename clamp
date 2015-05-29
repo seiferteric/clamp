@@ -97,6 +97,4 @@ elif args.command:
         command = var_replace(cmd_args, vars(args), command)
 
         
-        cmdargs = command.split()
-        cmd = cmdargs[0]
-        os.execvp(file=cmd, args=cmdargs)
+        os.system(command)
