@@ -23,6 +23,14 @@ $ clamp --set adduser -- 'curl -X POST -H "Content-type: application/json" -d '"
 $ clamp adduser -name Eric -email eric@example.com
 {"id":8,"name":"Eric","email":"eric@example.com","created_at":"2015-05-29T23:18:47.224Z","updated_at":"2015-05-29T23:18:47.224Z"}
 ```
+If the quotes get tricky, use the -r option to read from stdin
+```
+$ clamp -r --set adduser
+curl -X POST -H "Content-type: application/json" -d '{"name":"$(-name)","email":"$(-email)"}' http://localhost:$(-port=3000)/users
+$ ./clamp --list
+adduser:  'curl -X POST -H "Content-type: application/json" -d '"'"'{"name":"$(-name)","email":"$(-email)"}'"'"' http://localhost:$(-port=3000)/users'
+$
+```
 ##Clamp options
 ```
 $ clamp -h
