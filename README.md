@@ -6,7 +6,7 @@ variable that are passed as cli parameters. This is really handy for testing
 an HTTP API by wrapping curl commands, for example:
 
 ```
-$ clamp --set listusers -- 'curl http://localhost:$(-p=3000)/users'
+$ clamp --set listusers -- 'curl http://localhost:$(-port=3000)/users'
 ```
 
 This will create a new clamp command called "listusers" that can accept a
@@ -38,13 +38,13 @@ Clamp will even show the usage for the commands you create, though it needs impr
 
 ```
 $ clamp listusers --help
-usage: clamp [-h] [-p P]
+usage: clamp [-h] [-port PORT]
 
 listusers
 
 optional arguments:
   -h, --help  show this help message and exit
-  -p P
+  -port PORT
 ```
 
 ##.clamp files
