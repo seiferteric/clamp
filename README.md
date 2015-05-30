@@ -6,7 +6,7 @@ variable that are passed as cli parameters. This is really handy for testing
 an HTTP API by wrapping curl commands, for example:
 
 ```
-$ clamp --set listusers -- 'curl http://localhost:$(-port=3000)/users'
+$ clamp --set listusers -- 'curl --silent -H "Content-type: application/json" http://localhost:$(-port=3000)/users | python -m json.tool'
 ```
 
 This will create a new clamp command called "listusers" that can accept a
@@ -14,7 +14,22 @@ parameter "-port" for the port, although a default of 3000 is provided.
 
 ```
 $ clamp listusers
-[{"id":1,"created_at":"2015-05-28T16:39:52.178Z","updated_at":"2015-05-28T16:39:52.178Z","name":"Eric"}]
+[
+    {
+        "created_at": "2015-05-29T23:18:47.224Z",
+        "email": "eric@example.com",
+        "id": 8,
+        "name": "Eric",
+        "updated_at": "2015-05-29T23:18:47.224Z"
+    },
+    {
+        "created_at": "2015-05-29T23:34:43.583Z",
+        "email": "sdjf",
+        "id": 9,
+        "name": "akdfh",
+        "updated_at": "2015-05-29T23:34:43.583Z"
+    }
+]
 ```
 
 Slightly more complicated, be careful with your quotes...
