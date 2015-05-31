@@ -1,3 +1,11 @@
+clamp (0.0.8) utopic; urgency=medium
+
+  * Update README.md
+  * Get setup.py version from changelog
+  * Add commands for building deb package
+
+ -- Eric Seifert <eseifert@eseifert-ThinkPad-T61>  Sun, 31 May 2015 12:55:50 -0700
+
 clamp (0.0.7) utopic; urgency=medium
 
   * Update README.md
