@@ -23,7 +23,8 @@ def get_vars(searchstr):
     #I looked at soem existing templating engines but did not seem to do
     #exactly what I needed, and this was easy enough....
     sub = re.compile('\$\((\-\w+)=?([^\)\(]*)\)')
-    subvars = sub.findall(searchstr)
+    subvars = list(set(sub.findall(searchstr)))
+
     return subvars
 
 def var_replace(subvars, args, searchstr):
