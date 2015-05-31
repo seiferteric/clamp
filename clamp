@@ -60,6 +60,7 @@ parser.add_argument('--version', action='version', version='%(prog)s '+__version
 parser.add_argument('--set', help="Create a new command")
 parser.add_argument('-r', action="store_true", help="Read command from stdin instead of command line, may be easier for quotes")
 parser.add_argument('--list', action="store_true", help="List commands")
+parser.add_argument('-n', action="store_true", help="Don't escape commands when listing")
 choices = read_config().keys()
 parser.add_argument('--delete', help="Delete command", choices=choices)
 parser.add_argument('command', nargs=argparse.REMAINDER, choices=choices, help="user defined command: {%s}"%(','.join(choices)), metavar="command")
@@ -84,7 +85,7 @@ elif args.list:
         print("\n")
         length = len(max(commands.keys()))
         for k,v in commands.items():
-            print("%s:%s %s"%(k, ' '*(length-len(k) + 1),shlex.quote(v)))
+            print("%s:%s %s"%(k, ' '*(length-len(k) + 1),v if args.n else shlex.quote(v)))
         print("\n")
 elif args.delete:
     commands = read_config()
