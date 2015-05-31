@@ -88,3 +88,8 @@ different projects.
 $ git clone https://github.com/seiferteric/clamp.git
 $ cd clamp && sudo python3 setup.py install
 ```
+Or build a Debian package (must have git-buildpackage installed)
+```
+$ ./clamp mk_deb
+$ sudo dpkg -i ../clamp_<version>.deb
+```
