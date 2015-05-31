@@ -1,5 +1,6 @@
 {
     "last_version": "dpkg-parsechangelog -SVersion",
     "mk_deb": "git-buildpackage -us -uc",
-    "mk_release": "git-dch --commit -R -N $(-version)"
+    "mk_release": "git-dch --commit -R -N $(-version)",
+    "release_and_tag": "git-dch --commit -R -N $(-version) && git tag debian/$(-version)"
 }
