@@ -1,3 +1,10 @@
+clamp (0.0.10) utopic; urgency=medium
+
+  * Update README.md
+  * Add -n option to not escape commands
+
+ -- Eric Seifert <eseifert@eseifert-ThinkPad-T61>  Sun, 31 May 2015 13:34:52 -0700
+
 clamp (0.0.9) utopic; urgency=medium
 
   * Add version command
