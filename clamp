@@ -5,10 +5,17 @@
 import json, argparse, os, sys
 import re
 import shlex
+import pkg_resources
+
 try:
     import argcomplete
 except: 
     pass
+
+try:
+    __version__ = str(pkg_resources.require("clamp")[0].version)
+except:
+    __version__ = "0.0.0"
 
 def get_vars(searchstr):
     #Find variables in the form $(-x=y) or just $(-x)
@@ -48,6 +55,7 @@ def read_config(file_name=".clamp"):
     return commands 
 
 parser = argparse.ArgumentParser(description='CLAMP')
+parser.add_argument('--version', action='version', version='%(prog)s '+__version__)
 parser.add_argument('--set', help="Create a new command")
 parser.add_argument('-r', action="store_true", help="Read command from stdin instead of command line, may be easier for quotes")
 parser.add_argument('--list', action="store_true", help="List commands")
