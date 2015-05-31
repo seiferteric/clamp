@@ -1,0 +1,4 @@
+{
+    "mk_deb": "git-buildpackage -us -uc",
+    "mk_release": "git-dch --commit -R -N $(-version)"
+}
