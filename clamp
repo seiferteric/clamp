@@ -6,6 +6,7 @@ import json, argparse, os, sys
 import re
 import shlex
 import pkg_resources
+import readline
 
 try:
     import argcomplete
@@ -74,7 +75,7 @@ if args.set:
     commands = read_config()
     #Create a new command
     if args.r:
-        command = sys.stdin.readline().rstrip("\n")
+        command = input().rstrip("\n")
     else:
         command = ' '.join(args.command[1:])
     commands[args.set] = command
@@ -82,11 +83,11 @@ if args.set:
 elif args.list:
     commands = read_config()
     if commands:
-        print("\n")
+        print()
         length = len(max(commands.keys()))
         for k,v in commands.items():
             print("%s:%s %s"%(k, ' '*(length-len(k) + 1),v if args.n else shlex.quote(v)))
-        print("\n")
+        print()
 elif args.delete:
     commands = read_config()
     if args.delete in commands:
