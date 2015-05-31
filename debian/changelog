@@ -1,3 +1,12 @@
+clamp (0.0.9) utopic; urgency=medium
+
+  * Add version command
+  * Add last_version command
+  * Remove duplicate params to allow variable re-use
+  * release and tag command
+
+ -- Eric Seifert <eseifert@eseifert-ThinkPad-T61>  Sun, 31 May 2015 13:10:16 -0700
+
 clamp (0.0.8) utopic; urgency=medium
 
   * Update README.md
