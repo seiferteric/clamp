@@ -105,3 +105,4 @@ $ sudo dpkg -i ../clamp_<version>.deb
 ##TODO
  - Add input from STDIN for long text input
  - Fix tab completion for custom clamp commands.
+ - Export command(s) as standalone scripts.
