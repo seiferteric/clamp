@@ -1,3 +1,10 @@
+clamp (0.0.12) vivid; urgency=medium
+
+  * Update README.md
+  * Update README.md, make argcomplete a dependency
+
+ -- Eric Seifert <eseifert@eseifert-ThinkPad-T61>  Mon, 08 Jun 2015 18:55:44 -0700
+
 clamp (0.0.11) utopic; urgency=medium
 
   * Use readline and input
