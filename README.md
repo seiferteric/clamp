@@ -49,7 +49,7 @@ $
 ##Clamp options
 ```
 $ clamp -h
-usage: clamp [-h] [--set SET] [-r] [--list] [--delete {}] ...
+usage: clamp [-h] [--version] [--set SET] [-r] [--list] [-n] [--delete {}] ...
 
 CLAMP
 
@@ -58,11 +58,14 @@ positional arguments:
 
 optional arguments:
   -h, --help   show this help message and exit
+  --version    show program's version number and exit
   --set SET    Create a new command
   -r           Read command from stdin instead of command line, may be easier
                for quotes
   --list       List commands
+  -n           Don't escape commands when listing
   --delete {}  Delete command
+
 ```
 
 Clamp will even show the usage for the commands you create, though it needs improvement:
