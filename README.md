@@ -90,6 +90,11 @@ different projects.
 ```
 $ git clone https://github.com/seiferteric/clamp.git
 $ cd clamp && sudo python3 setup.py install
+
+# To enable command line completion
+
+$ pip3 install argcomplete
+$ activate-global-python-argcomplete3
 ```
 Or build a Debian package (must have git-buildpackage installed)
 ```
@@ -99,5 +104,4 @@ $ sudo dpkg -i ../clamp_<version>.deb
 
 ##TODO
  - Add input from STDIN for long text input
- - Add file upload
  - Fix tab completion for custom clamp commands.
