@@ -93,3 +93,8 @@ Or build a Debian package (must have git-buildpackage installed)
 $ ./clamp mk_deb
 $ sudo dpkg -i ../clamp_<version>.deb
 ```
+
+##TODO
+ - Add input from STDIN for long text input
+ - Add file upload
+ - Fix tab completion for custom clamp commands.
