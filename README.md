@@ -88,8 +88,7 @@ different projects.
 
 ##Install
 ```
-$ git clone https://github.com/seiferteric/clamp.git
-$ cd clamp && sudo python3 setup.py install
+$ sudo pip3 install git+https://github.com/seiferteric/clamp.git
 
 # To enable command line completion
 
